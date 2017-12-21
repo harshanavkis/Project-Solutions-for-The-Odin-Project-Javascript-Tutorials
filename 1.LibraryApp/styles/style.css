@@ -1,0 +1,21 @@
+html {
+  font-size: 10px;
+  background: url(https://media.istockphoto.com/photos/concept-of-training-picture-id491072386?s=2048x2048) bottom center;
+  background-size: cover;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.titleStyle {
+	margin: 1rem;
+	font-size: 4.5rem;
+	color: white;
+	padding: 1rem .5rem;
+	background: rgba(0,0,0,0.4);
+	text-align: center;
+	text-shadow: 0 0 .5rem black;
+}
