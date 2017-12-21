@@ -14,11 +14,27 @@
 
     <div id="bookList" class="titleStyle">
     <script >
+
+      function reply_click(){
+        if(this.className == "tile"){
+          this.className = "unreadtile";
+        }
+        else{
+          this.className = "tile";
+        }
+      }
+
       function render(s, parentRef, childRef, element) {
         var newbl = document.createElement(element);
         newbl.textContent = s['title'];
-        newbl.id = s['title'];
-        newbl.classList.add('tile');
+        newbl.id = s['title'].replace(/ /g,"");
+        if(read){
+          newbl.className = 'tile';
+        }
+        else{
+          newbl.className = 'unreadtile';
+        }
+        newbl.addEventListener('click',reply_click);
         parentRef.insertBefore(newbl, childRef);
 
         var author = document.createElement('li');
@@ -38,6 +54,7 @@
         newbl.insertBefore(read,null);
 
         var button = document.createElement('button');
+        button.id = "button_"+s['title'];
         if(read){
           button.textContent = "Read";
         }
@@ -46,6 +63,7 @@
         }
         newbl.insertBefore(button, null);
         }
+
         for(var i=0; i<localStorage.length -1; i++){
           var s = JSON.parse(localStorage.getItem(localStorage.key(i)));
           render(s, document.getElementById("bookList"), null, 'div');
@@ -58,5 +76,6 @@
     <form action = "bookForm.html" id="bookForm" >
       <button id="nb">New Book</button>
     </form>
+    <script src="scripts/index.js"></script>
   </body>
 </html>

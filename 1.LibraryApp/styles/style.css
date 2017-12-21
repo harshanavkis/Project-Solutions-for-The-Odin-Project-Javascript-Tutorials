@@ -30,19 +30,34 @@ body,html {
   width: 15rem;
   text-align: center;
   color: #ff0042;
-  background: rgba(0,1,0,0.4);
+  background: #F44336;
+  text-shadow: 0 0 .5rem black;
+  justify-content: center;
+}
+
+.unreadtile{
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 15rem;
+  text-align: center;
+  color: #ff0042;
+  background: #B2FF59;
   text-shadow: 0 0 .5rem black;
   justify-content: center;
 }
 
 .author{
-	color:#F8BBD0;
+	color:white;
 }
 
 .numPages{
-	color: #AB47BC;
+	color: white;
 }
 
 .read{
-	color: #DCE775;
+	color: white;
 }
