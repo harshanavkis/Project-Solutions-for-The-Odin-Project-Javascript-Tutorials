@@ -13,14 +13,50 @@
     <h1 align="center" class="titleStyle" id="title">Library</h1>
 
     <div id="bookList" class="titleStyle">
-<!--       <h3 id="myLib"></h3>
- -->      
+    <script >
+      function render(s, parentRef, childRef, element) {
+        var newbl = document.createElement(element);
+        newbl.textContent = s['title'];
+        newbl.id = s['title'];
+        newbl.classList.add('tile');
+        parentRef.insertBefore(newbl, childRef);
+
+        var author = document.createElement('li');
+        author.textContent = s['author'];
+        author.classList.add('author');
+        newbl.insertBefore(author,null);
+
+        var numPages = document.createElement('li');
+        numPages.textContent = s['numPages']+" pages";
+        numPages.classList.add('numPages');
+        newbl.insertBefore(numPages,null);
+
+        var read = document.createElement('li');
+        read.textContent = s['read'];
+        read.classList.add("read");
+        read.id = "read_"+s["title"];
+        newbl.insertBefore(read,null);
+
+        var button = document.createElement('button');
+        if(read){
+          button.textContent = "Read";
+        }
+        else{
+          button.textContent = "Unread";
+        }
+        newbl.insertBefore(button, null);
+        }
+        for(var i=0; i<localStorage.length -1; i++){
+          var s = JSON.parse(localStorage.getItem(localStorage.key(i)));
+          render(s, document.getElementById("bookList"), null, 'div');
+        }
+
+    </script>     
     </div>
 
    
     <form action = "bookForm.html" id="bookForm" >
       <button id="nb">New Book</button>
     </form>
-    <script src="scripts/index.js"></script>
   </body>
 </html>
