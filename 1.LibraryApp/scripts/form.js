@@ -22,7 +22,8 @@ function Book(title, author, numPages, read) {
 }
 
 function addBookToLibrary(book){
-	myLibrary.push(book);
+	myLibrary.push(book.title);
+	localStorage.setItem(book.title, JSON.stringify(book));
 }
 
 var add = document.getElementById('AddButton');
@@ -40,6 +41,10 @@ add.onclick = function(){
 	var read = document.getElementById('read').value;
 	var book = new Book(title, author, numPages, read);
 	addBookToLibrary(book);
+	document.getElementById('title').value = "";
+	document.getElementById('author').value = "";
+	document.getElementById('nop').value = "";
+	document.getElementById('read').value = "";
 	console.log(book)
 }
 
@@ -49,3 +54,5 @@ clear.onclick = function(){
 	document.getElementById('nop').value = "";
 	document.getElementById('read').value = "";
 }
+
+
