@@ -10,12 +10,28 @@ body,html {
   font-family: sans-serif;
 }
 
+
+.portrait {
+    height: 80px;
+    width: 30px;
+}
+
+.landscape {
+    height: 30px;
+    width: 80px;
+}
+
+.square {
+    height: 75px;
+    width: 75px;
+}
+
 .titleStyle {
 	margin: 1rem;
 	font-size: 4.5rem;
 	color: white;
 	padding: 1rem .5rem;
-	background: rgba(0,0,0,0.4);
+	background: rgba(0,0,0,0.2);
 	text-align: center;
 	text-shadow: 0 0 .5rem black;
 	justify-content: center;
@@ -28,6 +44,7 @@ body,html {
   font-size: 1.5rem;
   padding: 1rem .5rem;
   transition: all .07s ease;
+  float: left;
   width: 15rem;
   text-align: center;
   color: #ff0042;
@@ -42,6 +59,7 @@ body,html {
   margin: 1rem;
   font-size: 1.5rem;
   padding: 1rem .5rem;
+  float: left;
   transition: all .07s ease;
   width: 15rem;
   text-align: center;
@@ -61,4 +79,11 @@ body,html {
 
 .read{
 	color: white;
+}
+
+.new_bookButton{
+	position:absolute;
+    transition: .5s ease;
+    top: 50%;
+    left: 50%;
 }
