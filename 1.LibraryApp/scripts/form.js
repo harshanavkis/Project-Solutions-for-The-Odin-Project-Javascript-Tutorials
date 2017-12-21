@@ -42,3 +42,10 @@ add.onclick = function(){
 	addBookToLibrary(book);
 	console.log(book)
 }
+
+clear.onclick = function(){
+	document.getElementById('title').value = "";
+	document.getElementById('author').value = "";
+	document.getElementById('nop').value = "";
+	document.getElementById('read').value = "";
+}
