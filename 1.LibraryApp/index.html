@@ -19,16 +19,14 @@
         s = JSON.parse(localStorage.getItem(localStorage.key(this.id)));
         if(this.parentNode.className == "tile"){
           this.parentNode.className = "unreadtile";
-          this.parentNode.childNodes[4].textContent = "Unread";
+          this.parentNode.childNodes[3].textContent = "Read";
           s["read"] = true;
-          this.parentNode.childNodes[3].textContent = true;
           localStorage.setItem(localStorage.key(this.id),JSON.stringify(s))
         }
         else{
           this.parentNode.className = "tile";
-          this.parentNode.childNodes[4].textContent = "Read";
+          this.parentNode.childNodes[3].textContent = "Unread";
           s["read"] = false;
-          this.parentNode.childNodes[3].textContent = false;
           localStorage.setItem(localStorage.key(this.id),JSON.stringify(s))
         }
       }
@@ -65,12 +63,6 @@
         numPages.textContent = s['numPages']+" pages";
         numPages.classList.add('numPages');
         newbl.insertBefore(numPages,null);
-
-        var read = document.createElement('li');
-        read.textContent = s['read'];
-        read.classList.add("read");
-        read.id = "read_"+s["title"];
-        newbl.insertBefore(read,null);
 
         var button = document.createElement('button');
         button.id = "button_"+s['title'];
