@@ -17,24 +17,28 @@
 
       function reply_click(){
         s = JSON.parse(localStorage.getItem(localStorage.key(this.id)));
-        if(this.className == "tile"){
-          this.className = "unreadtile";
-          this.childNodes[4].textContent = "Unread";
+        if(this.parentNode.className == "tile"){
+          this.parentNode.className = "unreadtile";
+          this.parentNode.childNodes[4].textContent = "Unread";
           s["read"] = true;
-          this.childNodes[3].textContent = true;
+          this.parentNode.childNodes[3].textContent = true;
           localStorage.setItem(localStorage.key(this.id),JSON.stringify(s))
         }
         else{
-          this.className = "tile";
-          this.childNodes[4].textContent = "Read";
+          this.parentNode.className = "tile";
+          this.parentNode.childNodes[4].textContent = "Read";
           s["read"] = false;
-          this.childNodes[3].textContent = false;
+          this.parentNode.childNodes[3].textContent = false;
           localStorage.setItem(localStorage.key(this.id),JSON.stringify(s))
         }
       }
 
       function del_reply(){
-
+        var ele = document.getElementById(this.id);
+        var parent = ele.parentNode;
+        console.log(parent);
+        parent.parentNode.removeChild(parent);
+        localStorage.removeItem(localStorage.key(parent-1));
       }
 
 
@@ -42,13 +46,14 @@
         var newbl = document.createElement(element);
         newbl.textContent = s['title'];
         newbl.id = index;
+        read = s['read'];
         if(read){
           newbl.className = 'tile';
         }
         else{
           newbl.className = 'unreadtile';
         }
-        newbl.addEventListener('click',reply_click);
+        // newbl.addEventListener('click',reply_click);
         parentRef.insertBefore(newbl, childRef);
 
         var author = document.createElement('li');
@@ -75,6 +80,7 @@
         else{
           button.textContent = "Read";
         }
+        button.addEventListener('click', reply_click);
         newbl.insertBefore(button, null);
 
         var delButton = document.createElement('button');
@@ -83,10 +89,11 @@
         delButton.addEventListener('click',del_reply);
         newbl.insertBefore(delButton, null);
         }
-
-        for(var i=0; i<localStorage.length -1; i++){
+        if(localStorage.length != 1){
+          for(var i=0; i<localStorage.length -1; i++){
           var s = JSON.parse(localStorage.getItem(localStorage.key(i)));
           render(s, document.getElementById("bookList"), null, 'div', i);
+        }
         }
 
     </script>     
